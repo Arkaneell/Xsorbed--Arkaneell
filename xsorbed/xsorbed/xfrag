@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Created on Thu 11 May 2023
+
+@author: Enrico Pedretti
+
+Dissociation analysis
+
+"""
+
+#Import statements#####################################################################
+import sys
+from xsorbed.cli_parser import cli_parse_xfrag
+#
+from xsorbed.common_definitions import *
+########################################################################################
+
+
+def main():
+
+    print('xSorb version {0}, xFrag module'.format(VERSION))
+
+    if(len(sys.argv) == 1): 
+        print("No command provided. The program will now terminate.")
+        return 1
+    
+
+    args = cli_parse_xfrag()
+
+
+    #import statements##########################################################################
+    #they are imported here since the import is quite slow, so the help can be shown immediately
+    from xsorbed.fragments import setup_fragments_screening, isolated_fragments, final_relax_fragments, restart_jobs_fragments, get_diss_energies
+    ############################################################################################
+
+    #calc
+    if(args.generate_fragments):
+        isolated_fragments(RUN=False) 
+
+    elif(args.relax_fragments):
+        isolated_fragments(RUN=True)
+
+    elif(args.g):
+        setup_fragments_screening(RUN=False)
+
+    elif(args.s is not None):
+        setup_fragments_screening(RUN=True)
+
+    elif(args.r):
+        final_relax_fragments(n_configs=args.n, threshold=args.t, BY_SITE=args.by_site)
+
+    elif(args.restart):
+        restart_jobs_fragments(calc_type = 'SCREENING' if args.restart == 's' else 'RELAX')
+
+
+    #energies
+    elif(args.deltae):
+        get_diss_energies()
+
+
+if __name__ == '__main__':
+    sys.exit(main())

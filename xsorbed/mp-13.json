@@ -1,0 +1,37 @@
+{
+  "crystal_structure": {
+    "lattice": {
+      "lattice_kind": "Conventional",
+      "a": "2.86 Å",
+      "b": "2.86 Å",
+      "c": "2.86 Å",
+      "α": "90.00 º",
+      "β": "90.00 º",
+      "ɣ": "90.00 º",
+      "Volume": "23.47 Å³"
+    },
+    "atomic_positions": [
+      {
+        "wyckoff": "2a",
+        "element": "Fe",
+        "x": "0",
+        "y": "0",
+        "z": "0"
+      }
+    ],
+    "symmetry": {
+      "crystal_system": "Cubic",
+      "lattice_system": "Cubic",
+      "hall_number": "-I 4 2 3",
+      "international_number": 229,
+      "symbol": "Im3̅m",
+      "point_group": "m3̅m"
+    },
+    "structure_meta": {
+      "number_of_atoms": 2,
+      "density": "7.90 g·cm⁻³",
+      "dimensionality": "",
+      "possible_oxidation_states": "Unknown"
+    }
+  }
+}
